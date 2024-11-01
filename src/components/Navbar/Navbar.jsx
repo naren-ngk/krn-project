@@ -30,7 +30,7 @@ export default function FloatingNavbar({
         ease: "easeOut",
       }}
       className={cn(
-        "flex max-w-fit fixed top-8 inset-x-0 mx-auto border border-gray-500 rounded-2xl z-[5000] p-1 px-3 items-center justify-center space-x-2 backdrop-blur-sm",
+        "flex max-w-fit fixed top-8 inset-x-0 mx-auto bg-gray-900 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border border-gray-100/20 z-[5000] p-1 px-3 items-center justify-center space-x-2",
         className
       )}
     >
@@ -46,7 +46,7 @@ export default function FloatingNavbar({
         return (
           <Link
             key={index}
-            className="px-2 py-1 text-xs relative no-underline duration-300 ease-in"
+            className="px-2 py-1 text-white text-xs relative no-underline duration-300 ease-in"
             data-active={isActive}
             to={navItem.path}
             onMouseOver={() => setHoveredPath(navItem.path)}
@@ -55,18 +55,16 @@ export default function FloatingNavbar({
             <span>{navItem.name.toUpperCase()}</span>
             {navItem.path === hoveredPath && (
               <motion.div
-                className="border border-gray-500 p-3 rounded-lg absolute bottom-0 left-0 h-full -z-10"
+                className="border border-gray-100/70 p-3 rounded-lg absolute bottom-0 left-0 h-full -z-10"
                 layoutId="navbar"
                 aria-hidden="true"
                 style={{
                   width: "100%",
                 }}
                 transition={{
-                  type: "spring",
-                  bounce: 0.25,
-                  stiffness: 130,
-                  damping: 9,
-                  duration: 0.3,
+                  type: 'spring',
+                  duration: 0.6,
+                  ease: "easeOut",
                 }}
               >
                 <span className="absolute inset-x-0 w-3/4 h-[3px] mx-auto -bottom-px bg-gradient-to-r from-transparent via-primary to-transparent" />
